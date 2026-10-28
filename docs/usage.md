@@ -19,12 +19,24 @@ request when the current work ends.
 ## Menu
 
 - **Hide Icons / Show Icons** — same as a left click.
-- **Move Divider One Icon Left / Right** — move the divider past the next icon
-  without the mouse. This takes a few seconds, because Komora searches with a
-  probe item (see [how it works](how-it-works.md#6-moving-the-divider-without-the-mouse)).
-  If no icon is there to pass, Komora beeps and the divider stays.
-- **Shortcut: ⌥⌘B** — or a note that another app holds the shortcut. With a
-  custom shortcut the label shows the key code, for example `⌃⌥⌘key 4`.
+- **Hidden icons − / +** — **+** hides one icon more: the divider moves one
+  icon right. **−** hides one icon fewer: the divider moves one icon left. Each
+  press takes a few seconds, because Komora searches with a probe item (see
+  [how it works](how-it-works.md#6-moving-the-divider-without-the-mouse)). If no
+  icon is there to pass, Komora beeps and the divider stays. The number next to
+  the buttons counts steps from the default place: `0` is the default, `+2`
+  hides two icons more, `−1` one icon fewer. After a ⌘-drag it shows `custom`;
+  **Reset Divider Position** sets it back to `0`. Komora cannot count the hidden
+  icons themselves: that would need Accessibility.
+- **Reset Divider Position** — puts the divider back where it starts on first
+  launch (position value 250).
+- **Shortcut: ⌥⌘B** — the current shortcut, or a note that another app holds it.
+- **Change Shortcut…** — opens a small window. Press the new combination; it
+  must include ⌘, ⌥ or ⌃. Esc or **Cancel** keeps the old one. **Reset to ⌥⌘B**
+  restores the default. If another app holds the combination, the window says so.
+- **Launch at Login** — a switch. On means Komora starts when you log in. It
+  uses the system login item API (`SMAppService`), so Komora appears in System
+  Settings → General → Login Items.
 - **Last collapse: verified** — Komora's own check passed. If it says "an icon
   may sit next to the divider", see [troubleshooting](troubleshooting.md).
 - **Quit Komora** — quits. The pushers go away with the process, so hidden
@@ -37,7 +49,8 @@ to keep **right** of it. To change the order, ⌘-drag icons or the divider.
 
 ## Change the shortcut
 
-Komora reads two optional defaults. Values are Carbon virtual key codes and
+Use **Change Shortcut…** in the menu. Komora stores the result in two
+defaults, which you can also set by hand. Values are Carbon virtual key codes and
 Carbon modifier masks.
 
 ```sh
@@ -49,7 +62,7 @@ defaults delete dev.komora.Komora hotkeyKeyCode
 defaults delete dev.komora.Komora hotkeyModifiers
 ```
 
-Quit and reopen Komora after a change.
+Quit and reopen Komora after a change made by hand.
 
 | Modifier | Mask |
 |---|---|
@@ -68,6 +81,10 @@ open komora://expand
 open komora://toggle
 open komora://left     # move the divider one icon left
 open komora://right
+open komora://reset-divider
+open komora://shortcut  # open the shortcut window
+open komora://login-on  # launch at login on
+open komora://login-off
 open komora://state    # rewrite the state file
 ```
 
@@ -79,7 +96,9 @@ The state file is
   "collapsed" : true,
   "dividerKey" : 625.99951171875,
   "dividerMinX" : 1609,
+  "dividerOffset" : 2,
   "hotkey" : "⌥⌘B",
+  "launchAtLogin" : true,
   "pushers" : [ { "minX" : 1144, "width" : 465 }, … ],
   "updated" : "2026-10-28T19:48:52Z",
   "verified" : true
@@ -100,9 +119,10 @@ All of them are in the `dev.komora.Komora` defaults domain.
 |---|---|
 | `NSStatusItem Preferred Position Komora_…` | Position values of the divider, pushers and probes, written by Komora. |
 | `dividerKey` | Komora's copy of the divider's value. |
+| `dividerOffset` | Steps from the default place; absent after a ⌘-drag. |
 | `dividerGeneration`, `pusherGeneration` | Name generations after a ⌘-drag pin. |
 | `calibratedX` | The divider x at the last calibration. |
-| `hotkeyKeyCode`, `hotkeyModifiers` | Optional shortcut override. |
+| `hotkeyKeyCode`, `hotkeyModifiers` | The shortcut, if you changed it. |
 
 To reset everything, quit Komora and run
 `defaults delete dev.komora.Komora`. Komora then starts with value 250 and the

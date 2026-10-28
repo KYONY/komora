@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Menu: **Change Shortcut…** records a new global shortcut in a small window.
+- Menu: **Launch at Login** switch (`SMAppService`).
+- Menu items have SF Symbols icons.
+- Menu: **Hidden icons − / +** replaces "Move Divider One Icon Left / Right", with a step counter from the default place (`0`, `+1`, `−1` …); new **Reset Divider Position**.
+- URL scheme: `komora://shortcut`, `komora://login-on`, `komora://login-off`.
+- Shortcut labels show the real key name (from the ASCII keyboard layout).
+
 ## 0.1.0 — 2026-10-28
 
 First version.

@@ -10,7 +10,7 @@ left of the divider disappears. Press again and they come back.
   moves and measures its own status items.
 - **No synthetic mouse events.** It never moves the pointer or clicks for you.
 - **Works across displays.** Tested on two non-notched displays, one of them portrait.
-- **One global shortcut**, ⌥⌘B by default, registered with Carbon `RegisterEventHotKey`.
+- **One global shortcut**, ⌥⌘B by default, changeable from the menu, registered with Carbon `RegisterEventHotKey`.
 - **About 600 lines of Swift**, no dependencies.
 
 If you are looking for a Bartender, Ice, Hidden Bar, Dozer or Pelmet alternative
@@ -57,7 +57,7 @@ open /Applications/Komora.app
 ```
 
 You need Xcode or the Command Line Tools with Swift 5.9 or later. To start
-Komora at login, add it in System Settings → General → Login Items.
+Komora at login, turn on **Launch at Login** in its menu.
 
 If you run another menu bar hider, quit it first. Two hiders fight over the
 same bar, and both may react to ⌥⌘B.
@@ -69,7 +69,7 @@ same bar, and both may react to ⌥⌘B.
 | Click `›` | Hide every icon left of the divider. The glyph becomes `‹`. |
 | Click `‹` | Show them again. |
 | ⌥⌘B | Same toggle, from anywhere. |
-| Right-click or ⌃-click the divider | Menu: hide/show, move the divider one icon left or right, shortcut status, last-collapse check, quit. |
+| Right-click or ⌃-click the divider | Menu: hide/show, hide one icon more or fewer, reset the divider, change the shortcut, launch at login, last-collapse check, quit. |
 | ⌘-drag the divider | Move it. Komora adopts the new spot on the next collapse. |
 
 Hidden icons are out of the bar while collapsed. macOS may show a « item for

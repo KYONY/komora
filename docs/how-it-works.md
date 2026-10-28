@@ -126,7 +126,7 @@ last result.
 
 ## 6. Moving the divider without the mouse
 
-The menu items **Move Divider One Icon Left / Right** search for the next
+The menu buttons **Hidden icons − / +** search for the next
 foreign item's value. Komora uses a 1 pt wide **probe** item:
 
 1. It places the probe at values further and further from *K* until the probe

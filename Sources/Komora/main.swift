@@ -1,6 +1,7 @@
 import AppKit
 import Carbon.HIToolbox
 import KomoraCore
+import ServiceManagement
 
 // Komora — hides every menu bar icon left of its divider on macOS 27.
 //
@@ -28,6 +29,8 @@ func positionKey(_ name: String) -> String { "NSStatusItem Preferred Position \(
 
 let defaults = UserDefaults.standard
 let storedKeyName = "dividerKey"
+let offsetKey = "dividerOffset"
+let stepKeysKey = "dividerStepKeys"
 
 // MARK: - Log
 
@@ -105,6 +108,7 @@ final class Komora: NSObject, NSMenuDelegate {
     }
 
     func start() {
+        if defaults.object(forKey: storedKeyName) == nil { defaults.set(0, forKey: offsetKey) } // first launch: default place
         let key = dividerKey
         if userPlaced {
             placeDivider(key: nil)
@@ -160,7 +164,7 @@ final class Komora: NSObject, NSMenuDelegate {
                     log("collapse: pushers not adjacent, retrying with new pusher names")
                     removePushers()
                     bump("pusherGeneration")
-                    await adoptIfPinned()
+                    await adoptIfPinned(force: true)
                     ok = await placePushers()
                 }
                 lastVerified = ok
@@ -201,18 +205,22 @@ final class Komora: NSObject, NSMenuDelegate {
     /// 17:54:37: pushers above the calibrated key landed right of it). So adopt
     /// the user's spot: calibrate, then recreate the divider under a new name
     /// seeded at that key — it lands in the same place and obeys keys again.
-    private func adoptIfPinned() async {
-        guard userPlaced else { return }
+    /// `force`: adopt even though our seed is still there. Measured 2026-10-28
+    /// 20:33:51: after a ⌘-drag the seed key can survive while MenuBarAgent
+    /// ignores it, so a failed collapse check is the only sign.
+    private func adoptIfPinned(force: Bool = false) async {
+        guard userPlaced || force else { return }
         await calibrateIfNeeded(force: true)
         let before = frame(divider)
         bump("dividerGeneration")
+        defaults.removeObject(forKey: offsetKey) // moved by hand: the step count is unknown
         placeDivider(key: dividerKey)
         await settled([divider])
         log("adopt: \(dividerName) key \(dividerKey) x \(Int(before.minX)) -> \(Int(frame(divider).minX))")
     }
 
     private func calibrateIfNeeded(force: Bool = false) async {
-        guard userPlaced else { return }
+        guard userPlaced || force else { return }
         await settled([divider])
         let x = Double(frame(divider).minX)
         if !force, let cx = defaults.object(forKey: "calibratedX") as? Double, cx == x { return }
@@ -279,6 +287,26 @@ final class Komora: NSObject, NSMenuDelegate {
             defer { busy = false; updateGlyph(); writeState(); pump() }
             await adoptIfPinned()
             let before = frame(divider)
+            let target = dividerOffset.map { $0 + (direction == .right ? 1 : -1) }
+
+            // A step taken before: jump straight to its key, no probe search.
+            // Accept it only if the divider really moved the right way; an app
+            // that quit or launched since can make the stored key stale.
+            if let t = target, let cached = stepKeys[String(t)] {
+                placeDivider(key: cached)
+                await settled([divider])
+                let dx = frame(divider).minX - before.minX
+                if frame(divider).minX > 0, direction == .right ? dx > 2 : dx < -2 {
+                    dividerKey = cached
+                    defaults.set(t, forKey: offsetKey)
+                    log("nudge \(direction): remembered step \(t), key \(cached) x \(Int(before.minX)) -> \(Int(frame(divider).minX))")
+                    return
+                }
+                log("nudge \(direction): remembered step \(t) is stale, searching")
+                placeDivider(key: dividerKey)
+                await settled([divider])
+            }
+
             guard let newKey = await findNeighbourKey(direction) else {
                 log("nudge \(direction): no neighbour, divider stays")
                 NSSound.beep(); return
@@ -286,8 +314,41 @@ final class Komora: NSObject, NSMenuDelegate {
             dividerKey = newKey
             placeDivider(key: newKey)
             await settled([divider])
+            if let t = target {
+                defaults.set(t, forKey: offsetKey)
+                var keys = stepKeys
+                keys["0"] = keys["0"] ?? Keys.defaultDivider
+                keys[String(t)] = newKey
+                defaults.set(keys, forKey: stepKeysKey)
+            }
             log("nudge \(direction): key \(newKey) x \(Int(before.minX)) -> \(Int(frame(divider).minX))")
         }
+    }
+
+    /// Divider keys found for each step from the default place, so a step
+    /// taken once is not searched again ("0" is the default place).
+    var stepKeys: [String: Double] { defaults.dictionary(forKey: stepKeysKey) as? [String: Double] ?? [:] }
+
+    /// Steps from the default place: +1 = one icon more hidden. nil after a ⌘-drag.
+    var dividerOffset: Int? { defaults.object(forKey: offsetKey) as? Int }
+    var offsetText: String {
+        guard let n = dividerOffset else { return "custom" }
+        return n == 0 ? "0" : (n > 0 ? "+\(n)" : "−\(-n)")
+    }
+
+    /// Puts the divider back at the first-launch value under a fresh name, so a
+    /// name pinned by a ⌘-drag does not hold it in place.
+    func resetDivider() {
+        guard !busy else { return }
+        removePushers()
+        isCollapsed = false
+        bump("dividerGeneration")
+        defaults.removeObject(forKey: "calibratedX")
+        dividerKey = Keys.defaultDivider
+        defaults.set(0, forKey: offsetKey)
+        placeDivider(key: Keys.defaultDivider)
+        log("reset divider: \(dividerName) key \(Keys.defaultDivider)")
+        Task { @MainActor in await settled([divider]); writeState(); pump() }
     }
 
     /// Bisection over keys with a probe item, own frames only (no permission).
@@ -389,29 +450,55 @@ final class Komora: NSObject, NSMenuDelegate {
 
     private func showMenu() {
         let menu = NSMenu()
-        menu.addItem(withTitle: isCollapsed ? "Show Icons" : "Hide Icons", action: #selector(menuToggle), keyEquivalent: "").target = self
+        @discardableResult func item(_ title: String, _ symbol: String, _ action: Selector?, key: String = "") -> NSMenuItem {
+            let i = NSMenuItem(title: title, action: action, keyEquivalent: key)
+            i.target = action == nil || action == #selector(NSApplication.terminate(_:)) ? nil : self
+            i.image = NSImage(systemSymbolName: symbol, accessibilityDescription: nil)
+            if action == nil { i.isEnabled = false }
+            menu.addItem(i)
+            return i
+        }
+        item(isCollapsed ? "Show Icons" : "Hide Icons", isCollapsed ? "eye" : "eye.slash", #selector(menuToggle))
         menu.addItem(.separator())
-        menu.addItem(withTitle: "Move Divider One Icon Left", action: #selector(menuLeft), keyEquivalent: "").target = self
-        menu.addItem(withTitle: "Move Divider One Icon Right", action: #selector(menuRight), keyEquivalent: "").target = self
+        let stepper = NSMenuItem()
+        stepper.view = StepperMenuRow(title: "Hidden icons", symbol: "eye.slash.circle", value: offsetText,
+                                      minusTip: "Hide one icon fewer (divider moves left)",
+                                      plusTip: "Hide one icon more (divider moves right)") { [weak self, weak menu] more in
+            menu?.cancelTracking()
+            self?.nudge(more ? .right : .left)
+        }
+        menu.addItem(stepper)
+        item("Reset Divider Position", "arrow.counterclockwise", #selector(menuResetDivider))
         menu.addItem(.separator())
-        let hk = NSMenuItem(title: "Shortcut: \(hotkey.statusText)", action: nil, keyEquivalent: "")
-        hk.isEnabled = false
-        menu.addItem(hk)
+        item("Shortcut: \(hotkey.statusText)", "keyboard", nil)
+        item("Change Shortcut…", "command", #selector(menuChangeShortcut))
+        let login = NSMenuItem()
+        login.view = SwitchMenuRow(title: "Launch at Login", symbol: "power", isOn: LaunchAtLogin.isEnabled) { [weak self] on in
+            LaunchAtLogin.set(on); self?.writeState()
+        }
+        menu.addItem(login)
         if let v = lastVerified {
-            let st = NSMenuItem(title: v ? "Last collapse: verified" : "Last collapse: an icon may sit next to the divider", action: nil, keyEquivalent: "")
-            st.isEnabled = false
-            menu.addItem(st)
+            item(v ? "Last collapse: verified" : "Last collapse: an icon may sit next to the divider",
+                 v ? "checkmark.circle" : "exclamationmark.triangle", nil)
         }
         menu.addItem(.separator())
-        menu.addItem(withTitle: "Quit Komora", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
+        item("Quit Komora", "xmark.circle", #selector(NSApplication.terminate(_:)), key: "q")
         divider.menu = menu
         divider.button?.performClick(nil)
         divider.menu = nil
     }
 
+    private lazy var recorder: ShortcutRecorder = {
+        let r = ShortcutRecorder(hotkey: hotkey)
+        r.onChange = { [weak self] in self?.writeState() }
+        return r
+    }()
+
     @objc private func menuToggle() { toggle() }
     @objc private func menuLeft() { nudge(.left) }
     @objc private func menuRight() { nudge(.right) }
+    @objc private func menuResetDivider() { resetDivider() }
+    @objc private func menuChangeShortcut() { recorder.show() }
 
     // MARK: State (for scripts and tests)
 
@@ -424,8 +511,10 @@ final class Komora: NSObject, NSMenuDelegate {
             "verified": lastVerified as Any? ?? NSNull(),
             "dividerKey": dividerKey,
             "dividerMinX": d?.minX ?? -1,
+            "dividerOffset": dividerOffset as Any? ?? NSNull(),
             "pushers": pushers.map { ["minX": frame($0).minX, "width": frame($0).width] },
             "hotkey": hotkey.statusText,
+            "launchAtLogin": LaunchAtLogin.isEnabled,
             "updated": ISO8601DateFormatter().string(from: Date()),
         ]
         if let data = try? JSONSerialization.data(withJSONObject: state, options: [.prettyPrinted, .sortedKeys]) {
@@ -433,7 +522,7 @@ final class Komora: NSObject, NSMenuDelegate {
         }
     }
 
-    // URL scheme: komora://collapse | expand | toggle | left | right | state
+    // URL scheme: komora://collapse | expand | toggle | left | right | reset-divider | login-on | login-off | shortcut | state
     func handle(url: URL) {
         switch url.host ?? url.path {
         case "collapse": collapse()
@@ -441,22 +530,176 @@ final class Komora: NSObject, NSMenuDelegate {
         case "toggle": toggle()
         case "left": nudge(.left)
         case "right": nudge(.right)
+        case "reset-divider": resetDivider()
+        case "login-on": LaunchAtLogin.set(true); writeState()
+        case "login-off": LaunchAtLogin.set(false); writeState()
+        case "shortcut": recorder.show()
         default: writeState()
         }
+    }
+}
+
+// MARK: - Menu row with a switch
+
+/// A menu row laid out like a standard item (icon, title) with an NSSwitch on
+/// the right, so an on/off setting reads as a setting, not as a selection.
+final class SwitchMenuRow: NSView {
+    private let onToggle: (Bool) -> Void
+    private let toggle = NSSwitch()
+
+    init(title: String, symbol: String, isOn: Bool, onToggle: @escaping (Bool) -> Void) {
+        self.onToggle = onToggle
+        super.init(frame: NSRect(x: 0, y: 0, width: 260, height: 26))
+        autoresizingMask = [.width]
+
+        let icon = NSImageView(image: NSImage(systemSymbolName: symbol, accessibilityDescription: nil) ?? NSImage())
+        icon.contentTintColor = .labelColor
+        let label = NSTextField(labelWithString: title)
+        label.font = .menuFont(ofSize: 0)
+        toggle.controlSize = .small
+        toggle.state = isOn ? .on : .off
+        toggle.target = self
+        toggle.action = #selector(changed)
+        toggle.setAccessibilityLabel(title)
+
+        for v in [icon, label, toggle] as [NSView] {
+            v.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(v)
+        }
+        NSLayoutConstraint.activate([
+            icon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
+            icon.centerYAnchor.constraint(equalTo: centerYAnchor),
+            icon.widthAnchor.constraint(equalToConstant: 16),
+            label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 8),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            toggle.leadingAnchor.constraint(greaterThanOrEqualTo: label.trailingAnchor, constant: 12),
+            toggle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
+            toggle.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
+    }
+
+    required init?(coder: NSCoder) { fatalError("not used") }
+
+    @objc private func changed() { onToggle(toggle.state == .on) }
+}
+
+/// A menu row with an icon, a title and a − / + control on the right.
+final class StepperMenuRow: NSView {
+    private let onStep: (Bool) -> Void
+    private let control: NSSegmentedControl
+
+    init(title: String, symbol: String, value: String, minusTip: String, plusTip: String, onStep: @escaping (_ more: Bool) -> Void) {
+        self.onStep = onStep
+        control = NSSegmentedControl(images: [NSImage(systemSymbolName: "minus", accessibilityDescription: minusTip)!,
+                                              NSImage(systemSymbolName: "plus", accessibilityDescription: plusTip)!],
+                                     trackingMode: .momentary, target: nil, action: nil)
+        super.init(frame: NSRect(x: 0, y: 0, width: 260, height: 28))
+        autoresizingMask = [.width]
+        control.target = self
+        control.action = #selector(clicked)
+        control.controlSize = .small
+        control.setToolTip(minusTip, forSegment: 0)
+        control.setToolTip(plusTip, forSegment: 1)
+
+        let icon = NSImageView(image: NSImage(systemSymbolName: symbol, accessibilityDescription: nil) ?? NSImage())
+        icon.contentTintColor = .labelColor
+        let label = NSTextField(labelWithString: title)
+        label.font = .menuFont(ofSize: 0)
+        let valueLabel = NSTextField(labelWithString: value)
+        valueLabel.font = .monospacedDigitSystemFont(ofSize: NSFont.systemFontSize, weight: .medium)
+        valueLabel.textColor = .secondaryLabelColor
+        valueLabel.toolTip = "Steps from the default divider place (0). custom = moved by ⌘-drag; Reset Divider Position starts counting again."
+        for v in [icon, label, valueLabel, control] as [NSView] {
+            v.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(v)
+        }
+        NSLayoutConstraint.activate([
+            icon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
+            icon.centerYAnchor.constraint(equalTo: centerYAnchor),
+            icon.widthAnchor.constraint(equalToConstant: 16),
+            label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 8),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            valueLabel.leadingAnchor.constraint(greaterThanOrEqualTo: label.trailingAnchor, constant: 12),
+            valueLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            control.leadingAnchor.constraint(equalTo: valueLabel.trailingAnchor, constant: 8),
+            control.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
+            control.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
+    }
+
+    required init?(coder: NSCoder) { fatalError("not used") }
+
+    @objc private func clicked() { onStep(control.selectedSegment == 1) }
+}
+
+// MARK: - Launch at login (SMAppService, macOS 13+)
+
+enum LaunchAtLogin {
+    static var isEnabled: Bool { SMAppService.mainApp.status == .enabled }
+
+    static func set(_ on: Bool) {
+        do {
+            if on { try SMAppService.mainApp.register() } else { try SMAppService.mainApp.unregister() }
+        } catch {
+            log("launch at login \(on ? "on" : "off") failed: \(error.localizedDescription)")
+        }
+        log("launch at login: \(SMAppService.mainApp.status.rawValue) (0 off, 1 on, 2 needs approval, 3 not found)")
     }
 }
 
 // MARK: - Global shortcut (Carbon, needs no permission)
 
 final class Hotkey {
+    static let defaultCode = UInt32(kVK_ANSI_B)
+    static let defaultMods = UInt32(cmdKey | optionKey)
+
     var onPress: (() -> Void)?
     private var ref: EventHotKeyRef?
+    private var handlerInstalled = false
     private(set) var statusText = "not registered"
 
-    func register() {
-        // Default ⌥⌘B; override: defaults write dev.komora.Komora hotkeyKeyCode -int N; hotkeyModifiers -int M (Carbon masks).
-        let code = UInt32(defaults.object(forKey: "hotkeyKeyCode") as? Int ?? kVK_ANSI_B)
-        let mods = UInt32(defaults.object(forKey: "hotkeyModifiers") as? Int ?? (cmdKey | optionKey))
+    var code: UInt32 { UInt32(defaults.object(forKey: "hotkeyKeyCode") as? Int ?? Int(Hotkey.defaultCode)) }
+    var mods: UInt32 { UInt32(defaults.object(forKey: "hotkeyModifiers") as? Int ?? Int(Hotkey.defaultMods)) }
+
+    /// Registers the stored shortcut (default ⌥⌘B).
+    @discardableResult
+    func register() -> OSStatus {
+        installHandler()
+        unregister()
+        let id = EventHotKeyID(signature: OSType(0x4B4D5241), id: 1) // 'KMRA'
+        let err = RegisterEventHotKey(code, mods, id, GetApplicationEventTarget(), 0, &ref)
+        let label = Hotkey.describe(code: code, mods: mods)
+        statusText = err == noErr ? label : "\(label) unavailable — another app holds it"
+        return err
+    }
+
+    func unregister() {
+        if let ref { UnregisterEventHotKey(ref) }
+        ref = nil
+    }
+
+    /// Stores and registers a new shortcut. Keeps the old one if the new one is taken.
+    func change(code newCode: UInt32, mods newMods: UInt32) -> Bool {
+        let oldCode = defaults.object(forKey: "hotkeyKeyCode"), oldMods = defaults.object(forKey: "hotkeyModifiers")
+        defaults.set(Int(newCode), forKey: "hotkeyKeyCode")
+        defaults.set(Int(newMods), forKey: "hotkeyModifiers")
+        if register() == noErr { log("shortcut: \(statusText)"); return true }
+        defaults.set(oldCode, forKey: "hotkeyKeyCode")
+        defaults.set(oldMods, forKey: "hotkeyModifiers")
+        register()
+        return false
+    }
+
+    func reset() {
+        defaults.removeObject(forKey: "hotkeyKeyCode")
+        defaults.removeObject(forKey: "hotkeyModifiers")
+        register()
+        log("shortcut reset: \(statusText)")
+    }
+
+    private func installHandler() {
+        guard !handlerInstalled else { return }
+        handlerInstalled = true
         var spec = EventTypeSpec(eventClass: OSType(kEventClassKeyboard), eventKind: UInt32(kEventHotKeyPressed))
         let me = Unmanaged.passUnretained(self).toOpaque()
         InstallEventHandler(GetApplicationEventTarget(), { _, _, data in
@@ -464,10 +707,15 @@ final class Hotkey {
             DispatchQueue.main.async { hk.onPress?() }
             return noErr
         }, 1, &spec, me, nil)
-        let id = EventHotKeyID(signature: OSType(0x4B4D5241), id: 1) // 'KMRA'
-        let err = RegisterEventHotKey(code, mods, id, GetApplicationEventTarget(), 0, &ref)
-        let label = Hotkey.describe(code: code, mods: mods)
-        statusText = err == noErr ? label : "\(label) unavailable (error \(err)) — another app holds it"
+    }
+
+    static func carbonMods(_ flags: NSEvent.ModifierFlags) -> UInt32 {
+        var m: UInt32 = 0
+        if flags.contains(.command) { m |= UInt32(cmdKey) }
+        if flags.contains(.option) { m |= UInt32(optionKey) }
+        if flags.contains(.control) { m |= UInt32(controlKey) }
+        if flags.contains(.shift) { m |= UInt32(shiftKey) }
+        return m
     }
 
     static func describe(code: UInt32, mods: UInt32) -> String {
@@ -476,7 +724,126 @@ final class Hotkey {
         if mods & UInt32(optionKey) != 0 { s += "⌥" }
         if mods & UInt32(shiftKey) != 0 { s += "⇧" }
         if mods & UInt32(cmdKey) != 0 { s += "⌘" }
-        return s + (code == UInt32(kVK_ANSI_B) ? "B" : "key \(code)")
+        return s + keyName(code)
+    }
+
+    static let specialKeys: [Int: String] = [
+        kVK_Space: "Space", kVK_Return: "↩", kVK_Tab: "⇥", kVK_Escape: "⎋", kVK_Delete: "⌫",
+        kVK_ForwardDelete: "⌦", kVK_LeftArrow: "←", kVK_RightArrow: "→", kVK_UpArrow: "↑", kVK_DownArrow: "↓",
+        kVK_Home: "↖", kVK_End: "↘", kVK_PageUp: "⇞", kVK_PageDown: "⇟",
+        kVK_F1: "F1", kVK_F2: "F2", kVK_F3: "F3", kVK_F4: "F4", kVK_F5: "F5", kVK_F6: "F6",
+        kVK_F7: "F7", kVK_F8: "F8", kVK_F9: "F9", kVK_F10: "F10", kVK_F11: "F11", kVK_F12: "F12",
+    ]
+
+    /// Key name from the ASCII-capable layout, so a Cyrillic layout still shows "B".
+    static func keyName(_ code: UInt32) -> String {
+        if let s = specialKeys[Int(code)] { return s }
+        guard let source = TISCopyCurrentASCIICapableKeyboardLayoutInputSource()?.takeRetainedValue(),
+              let ptr = TISGetInputSourceProperty(source, kTISPropertyUnicodeKeyLayoutData) else { return "key \(code)" }
+        let data = Unmanaged<CFData>.fromOpaque(ptr).takeUnretainedValue() as Data
+        var dead: UInt32 = 0
+        var chars = [UniChar](repeating: 0, count: 4)
+        var length = 0
+        let status = data.withUnsafeBytes { raw -> OSStatus in
+            let layout = raw.bindMemory(to: UCKeyboardLayout.self).baseAddress!
+            return UCKeyTranslate(layout, UInt16(code), UInt16(kUCKeyActionDisplay), 0, UInt32(LMGetKbdType()),
+                                  OptionBits(kUCKeyTranslateNoDeadKeysBit), &dead, chars.count, &length, &chars)
+        }
+        guard status == noErr, length > 0 else { return "key \(code)" }
+        return String(utf16CodeUnits: chars, count: length).uppercased()
+    }
+}
+
+// MARK: - Shortcut recorder window
+
+/// A small window that records the next key combination. It reads keys only
+/// while its own window is key, so it needs no Input Monitoring permission.
+@MainActor
+final class ShortcutRecorder: NSObject, NSWindowDelegate {
+    private var window: NSPanel?
+    private var monitor: Any?
+    private let label = NSTextField(labelWithString: "")
+    private let hotkey: Hotkey
+    var onChange: (() -> Void)?
+
+    init(hotkey: Hotkey) { self.hotkey = hotkey }
+
+    func show() {
+        if let window { window.makeKeyAndOrderFront(nil); NSApp.activate(ignoringOtherApps: true); return }
+        let panel = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 360, height: 150),
+                            styleMask: [.titled, .closable], backing: .buffered, defer: false)
+        panel.title = "Komora Shortcut"
+        panel.isReleasedWhenClosed = false
+        panel.delegate = self
+
+        let title = NSTextField(labelWithString: "Press the new shortcut.")
+        title.font = .boldSystemFont(ofSize: 13)
+        label.stringValue = "Current: \(hotkey.statusText). Use ⌘, ⌥ or ⌃. Esc cancels."
+        label.textColor = .secondaryLabelColor
+        label.lineBreakMode = .byWordWrapping
+        label.maximumNumberOfLines = 3
+        let reset = NSButton(title: "Reset to ⌥⌘B", target: self, action: #selector(resetShortcut))
+        let cancel = NSButton(title: "Cancel", target: self, action: #selector(close))
+        let buttons = NSStackView(views: [reset, cancel])
+        let stack = NSStackView(views: [title, label, buttons])
+        stack.orientation = .vertical
+        stack.alignment = .leading
+        stack.spacing = 10
+        stack.edgeInsets = NSEdgeInsets(top: 16, left: 20, bottom: 16, right: 20)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        panel.contentView = NSView()
+        panel.contentView!.addSubview(stack)
+        NSLayoutConstraint.activate([
+            stack.leadingAnchor.constraint(equalTo: panel.contentView!.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: panel.contentView!.trailingAnchor),
+            stack.topAnchor.constraint(equalTo: panel.contentView!.topAnchor),
+            stack.bottomAnchor.constraint(equalTo: panel.contentView!.bottomAnchor),
+            label.widthAnchor.constraint(equalToConstant: 320),
+        ])
+        window = panel
+
+        // The global shortcut would swallow its own combination while recording.
+        hotkey.unregister()
+        monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
+            guard let self, event.window === self.window else { return event }
+            self.record(event)
+            return nil
+        }
+        panel.center()
+        NSApp.activate(ignoringOtherApps: true)
+        panel.makeKeyAndOrderFront(nil)
+    }
+
+    private func record(_ event: NSEvent) {
+        let flags = event.modifierFlags.intersection([.command, .option, .control, .shift])
+        if event.keyCode == UInt16(kVK_Escape) && flags.isEmpty { close(); return }
+        guard !flags.intersection([.command, .option, .control]).isEmpty else {
+            label.stringValue = "Add ⌘, ⌥ or ⌃ to the key."
+            return
+        }
+        let code = UInt32(event.keyCode), mods = Hotkey.carbonMods(flags)
+        if hotkey.change(code: code, mods: mods) {
+            onChange?()
+            close()
+        } else {
+            label.stringValue = "\(Hotkey.describe(code: code, mods: mods)) is taken by another app. Try another."
+        }
+    }
+
+    @objc private func resetShortcut() {
+        hotkey.reset()
+        onChange?()
+        close()
+    }
+
+    @objc func close() { window?.close() }
+
+    func windowWillClose(_ notification: Notification) {
+        if let monitor { NSEvent.removeMonitor(monitor) }
+        monitor = nil
+        window = nil
+        hotkey.register() // restores the stored shortcut if recording was cancelled
+        onChange?()
     }
 }
 

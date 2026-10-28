@@ -4,7 +4,7 @@
 
 - **Another item covers it.** Overlays such as a "software island" pill in the
   middle of the bar can draw over status items. ⌘-drag the divider to a free
-  spot, or use **Move Divider One Icon Left / Right** from a spot you can reach.
+  spot, or use **Hidden icons − / +** or **Reset Divider Position** in the menu.
 - **The bar is full.** If the divider itself sits far left, macOS may put it
   out of the bar. Quit Komora, run `defaults delete dev.komora.Komora`, and
   reopen it. If that does not help, ⌘-drag icons to make room.
