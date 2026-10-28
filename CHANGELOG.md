@@ -6,8 +6,10 @@
 - Menu: **Launch at Login** switch (`SMAppService`).
 - Menu items have SF Symbols icons.
 - Menu: **Hidden icons − / +** replaces "Move Divider One Icon Left / Right", with a step counter from the default place (`0`, `+1`, `−1` …); new **Reset Divider Position**.
-- URL scheme: `komora://shortcut`, `komora://login-on`, `komora://login-off`.
+- URL scheme: `komora://shortcut`, `komora://login-on`, `komora://login-off`, `komora://reset-divider`.
 - Shortcut labels show the real key name (from the ASCII keyboard layout).
+- Steps already taken with − / + are remembered, so the divider moves without the probe search (and without the jumping icons).
+- A failed collapse check forces a re-adopt of the divider. After a ⌘-drag the position value can survive while macOS ignores it.
 
 ## 0.1.0 — 2026-10-28
 

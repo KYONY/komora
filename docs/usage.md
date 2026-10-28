@@ -28,6 +28,15 @@ request when the current work ends.
   hides two icons more, `−1` one icon fewer. After a ⌘-drag it shows `custom`;
   **Reset Divider Position** sets it back to `0`. Komora cannot count the hidden
   icons themselves: that would need Accessibility.
+
+  The first time you step to a number, Komora searches for the next icon. While
+  it searches, the icons next to the divider jump left and right for a few
+  seconds: each try moves a hidden probe item, and macOS lays out the bar again.
+  Komora remembers where each step landed. The next time you step to the same
+  number, the divider goes there at once, without the search. If the divider
+  does not move the right way, for example because an app quit or launched,
+  Komora searches again and updates what it remembered. Steps are remembered
+  only while the counter shows a number, not `custom`.
 - **Reset Divider Position** — puts the divider back where it starts on first
   launch (position value 250).
 - **Shortcut: ⌥⌘B** — the current shortcut, or a note that another app holds it.
@@ -120,6 +129,7 @@ All of them are in the `dev.komora.Komora` defaults domain.
 | `NSStatusItem Preferred Position Komora_…` | Position values of the divider, pushers and probes, written by Komora. |
 | `dividerKey` | Komora's copy of the divider's value. |
 | `dividerOffset` | Steps from the default place; absent after a ⌘-drag. |
+| `dividerStepKeys` | Remembered divider value for each step number (`"0"`, `"1"`, `"-1"` …). |
 | `dividerGeneration`, `pusherGeneration` | Name generations after a ⌘-drag pin. |
 | `calibratedX` | The divider x at the last calibration. |
 | `hotkeyKeyCode`, `hotkeyModifiers` | The shortcut, if you changed it. |

@@ -142,6 +142,24 @@ the next foreign item (AppD in the logs). So that item's value
 lay between 498.999 and 499 ([app log](../research/logs/komora-app.log)
 17:02:33–17:04:11, `probe right` lines).
 
+### Remembered steps
+
+Each search re-registers the probe many times, and every registration makes
+macOS lay out the bar again. The icons next to the divider visibly jump. So
+Komora stores the value it found for each step from the default place
+(`dividerStepKeys`, keyed by the counter: `"0"` is 250, `"-1"`, `"1"` …).
+
+On the next step to a stored number, Komora places the divider at the stored
+value and checks its own frame: the divider must have moved at least 2 pt in
+the expected direction. If it did, the step is done without a probe. If not,
+the stored value is stale (an app quit or launched, so the foreign values
+around the divider changed). Komora puts the divider back, runs the normal
+search and stores the new value. After a ⌘-drag the counter is unknown, so no
+stored value is used until **Reset Divider Position**.
+
+This check is a design choice. It is not measured on a bar where apps change
+between two steps.
+
 ## 7. ⌘-drag pins items
 
 You can ⌘-drag the divider like any menu bar item. On macOS 27.0.1 a ⌘-drag

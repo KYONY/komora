@@ -317,7 +317,6 @@ final class Komora: NSObject, NSMenuDelegate {
             if let t = target {
                 defaults.set(t, forKey: offsetKey)
                 var keys = stepKeys
-                keys["0"] = keys["0"] ?? Keys.defaultDivider
                 keys[String(t)] = newKey
                 defaults.set(keys, forKey: stepKeysKey)
             }
@@ -327,7 +326,11 @@ final class Komora: NSObject, NSMenuDelegate {
 
     /// Divider keys found for each step from the default place, so a step
     /// taken once is not searched again ("0" is the default place).
-    var stepKeys: [String: Double] { defaults.dictionary(forKey: stepKeysKey) as? [String: Double] ?? [:] }
+    var stepKeys: [String: Double] {
+        var keys = defaults.dictionary(forKey: stepKeysKey) as? [String: Double] ?? [:]
+        keys["0"] = keys["0"] ?? Keys.defaultDivider // the default place is always known
+        return keys
+    }
 
     /// Steps from the default place: +1 = one icon more hidden. nil after a ⌘-drag.
     var dividerOffset: Int? { defaults.object(forKey: offsetKey) as? Int }
