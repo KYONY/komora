@@ -1,0 +1,23 @@
+2026-10-28T16:49:31Z
+27.0.1
+key=   0.00 x=  1197 settle=0.08s  - < P < AppA
+key=   1.00 x=  2107 settle=0.06s  MenuBarAgent < P < MenuBarAgent
+key=   5.00 x=  2107 settle=0.08s  MenuBarAgent < P < MenuBarAgent
+key=  20.00 x=  2107 settle=0.08s  MenuBarAgent < P < MenuBarAgent
+key=  50.00 x=  2107 settle=0.06s  MenuBarAgent < P < MenuBarAgent
+key= 100.00 x=  2107 settle=0.09s  MenuBarAgent < P < MenuBarAgent
+key= 150.00 x=  2069 settle=0.08s  TextInputMenuAgent < P < MenuBarAgent
+key= 200.00 x=  2025 settle=0.06s  MenuBarAgent < P < TextInputMenuAgent
+key= 250.00 x=  1962 settle=0.08s  AppE[     ] < P < app
+key= 280.00 x=  1718 settle=0.06s  AppD[label] < P < AppE[     ]
+key= 320.00 x=  1718 settle=0.06s  AppD[label] < P < AppE[     ]
+key= 350.00 x=  1718 settle=0.06s  AppD[label] < P < AppE[     ]
+key= 400.00 x=  1718 settle=0.06s  AppD[label] < P < AppE[     ]
+key= 500.00 x=  1647 settle=0.06s  tray[AppC i] < P < AppD[label]
+key= 600.00 x=  1609 settle=0.07s  Pelmet[Pelmet] < P < tray[AppC i]
+key= 700.00 x=  1517 settle=0.06s  AppH < P < AppG
+key= 800.00 x=  1401 settle=0.06s  AppL < P < AppM
+key= 900.00 x=  1307 settle=0.06s  AppK < P < app
+key= 950.00 x=  1236 settle=0.06s  AppA < P < AppB[AppB]
+key= 999.00 x=  1198 settle=0.06s  - < P < AppA
+done

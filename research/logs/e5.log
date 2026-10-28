@@ -1,0 +1,25 @@
+2026-10-28T16:48:28Z
+27.0.1
+### reuse E4 names: P, H2, H1
+### expanded
+« none | own: H1@1113w38 H2@1149w40 P4@1187w39 | first-foreign: AppA@1232 AppB@1262 AppK@1295 app@1333
+### H1._setLayoutIndex(5)
+### after layoutIndex 5
+« none | own: H1@1113w38 H2@1149w40 P4@1187w39 | first-foreign: AppA@1232 AppB@1262 AppK@1295 app@1333
+### H1._setLayoutIndex(0)
+### after layoutIndex 0
+« none | own: H1@1113w38 H2@1149w40 P4@1187w39 | first-foreign: AppA@1232 AppB@1262 AppK@1295 app@1333
+### P overflowPrio=1000, L=900
+ovf now 0
+### L=900 ovf1000
+« @1199 | own: P4@307w902 H2@1177w40 H1@1179w38 | first-foreign: AppA@1231 AppB@1261 AppK@1294 app@1332
+### P overflowPrio=-1000
+### L=899 ovf-1000
+« @1199 | own: P4@308w901 H2@1177w40 H1@1179w38 | first-foreign: AppA@1231 AppB@1261 AppK@1294 app@1332
+### H2 ovf=1000, P ovf 0, L=800
+### L=850 H2 ovf1000
+« @1200 | own: P4@358w852 H2@1178w40 H1@1180w38 | first-foreign: AppA@1232 AppB@1262 AppK@1295 app@1333
+### reset P
+### priority item E5_Q prio=2147483647
+### after prio item
+« none | own: H1@1112w38 H2@1148w40 P4@1186w39 | first-foreign: AppA@1231 AppB@1261 AppK@1294 app@1332

@@ -1,0 +1,10 @@
+2026-10-28T16:49:14Z
+27.0.1
+### seed + create
+### after
+  win@0 w2320 n=24: P4@1076w37 S1000@1113w59 ·@1172w38 AppB@1210w33 ·@1243w38 ·@1281w32 ·@1313w30 ·@1343w32 ·@1375w38 ·@1413w38 ·@1451w40 ·@1491w40 Pelmet divider@1531w26 Pelmet@1557w26 AppC import@1583w38 AppD label@1621w71 S300@1692w53      @1745w244 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=15: AppE@2763w244 AppD@2936w71 KomoraProbe@2954w53 AppG@2967w40 AppH@2967w40 AppCTray@2969w38 Pelmet@2981w26 Pelmet@2981w26 Show Hidden Me@2990w17 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+E4_P cur=0.0 saved=3.4028235e+38 approx=(1076.0, 1275.0, 37.0, 30.0)
+E10_SEED300 cur=0.0 saved=300.0 approx=(1692.0, 1275.0, 53.0, 30.0)
+E10_SEED1000 cur=0.0 saved=1000.0 approx=(1113.0, 1275.0, 59.0, 30.0)
+### done

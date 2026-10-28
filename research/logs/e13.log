@@ -1,0 +1,17 @@
+2026-10-28T16:49:58Z
+27.0.1
+### T at 250
+### expanded
+  win@0 w2320 n=22: ·@1199w38 AppB@1237w33 ·@1270w38 ·@1308w32 ·@1340w30 ·@1370w32 ·@1402w38 ·@1440w38 ·@1478w40 ·@1518w40 Pelmet divider@1558w26 Pelmet@1584w26 AppC import@1610w38 AppD label@1648w71      @1719w244 ‹@1963w26 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=15: AppE@2737w244 AppD@2910w71 AppG@2941w40 AppH@2941w40 AppCTray@2943w38 Pelmet@2955w26 Pelmet@2955w26 Show Hidden Me@2964w17 KomoraProbe@2989w26 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+T=(1963.0, 1275.0, 26.0, 30.0)
+### collapse: register 5 pushers at 250+0.001*i, length 449.0
+### collapsed
+  win@0 w2320 n=10: ·@568w465 ·@1033w465 ·@1498w465 ‹@1963w26 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=9: KomoraProbe@2516w465 Show Hidden Me@2964w17 KomoraProbe@2989w26 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+T=(1963.0, 1275.0, 26.0, 30.0) pushers=1498,1033,568,0,0
+### expand: remove pushers
+### expanded again
+  win@0 w2320 n=22: ·@1199w38 AppB@1237w33 ·@1270w38 ·@1308w32 ·@1340w30 ·@1370w32 ·@1402w38 ·@1440w38 ·@1478w40 ·@1518w40 Pelmet divider@1558w26 Pelmet@1584w26 AppC import@1610w38 AppD label@1648w71      @1719w244 ‹@1963w26 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=15: AppE@2737w244 AppD@2910w71 AppH@2941w40 AppG@2941w40 AppCTray@2943w38 Pelmet@2955w26 Pelmet@2955w26 Show Hidden Me@2964w17 KomoraProbe@2989w26 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+### done

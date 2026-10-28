@@ -1,0 +1,21 @@
+# Build output
+.build/
+build/
+research/probe/KomoraProbe.app/Contents/MacOS/
+research/probe/b/
+research/probe/observe
+
+# Local agent tooling (not part of Komora)
+.claude/
+.serena/
+.mcp.json
+.vector_memory/
+memory/
+
+# macOS
+.DS_Store
+
+# Internal run notes (kept local by the author's choice)
+openspec/changes/*/brief.md
+openspec/changes/*/session.md
+openspec/changes/*/report.md

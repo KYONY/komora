@@ -1,0 +1,26 @@
+2026-10-28T16:49:04Z
+27.0.1
+### P, H2, H1
+### before
+  win@0 w2320 n=24: H1@1114w36 H2@1150w38 P4@1188w37 ·@1225w38 AppB@1263w33 ·@1296w38 ·@1334w32 ·@1366w30 ·@1396w32 ·@1428w38 ·@1466w38 ·@1504w40 ·@1544w40 Pelmet divider@1584w26 Pelmet@1610w26 AppC import@1636w38 AppD label@1674w71      @1745w244 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=15: AppE@2763w244 AppD@2936w71 AppH@2967w40 AppG@2967w40 AppCTray@2969w38 AppJ@2969w38 Pelmet@2981w26 Pelmet@2981w26 Show Hidden Me@2990w17 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+own: H1@1114 H2@1150 P4@1188
+supportsDragging=true allowItemDragging=true
+### start drag H1
+isDragging=false
+### drag +20.0
+### drag +40.0
+### drag +60.0
+### drag +80.0
+### drag +100.0
+### drag +120.0
+### drag +140.0
+### mid
+own: H1@1114 H2@1150 P4@1188
+### complete
+isDragging=false
+### after
+  win@0 w2320 n=24: H1@1114w36 H2@1150w38 P4@1188w37 ·@1225w38 AppB@1263w33 ·@1296w38 ·@1334w32 ·@1366w30 ·@1396w32 ·@1428w38 ·@1466w38 ·@1504w40 ·@1544w40 Pelmet divider@1584w26 Pelmet@1610w26 AppC import@1636w38 AppD label@1674w71      @1745w244 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=15: AppE@2763w244 AppD@2936w71 AppH@2967w40 AppG@2967w40 AppCTray@2969w38 AppJ@2969w38 Pelmet@2981w26 Pelmet@2981w26 Show Hidden Me@2990w17 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+own: H1@1114 H2@1150 P4@1188
+### done

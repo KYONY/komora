@@ -1,0 +1,367 @@
+2026-10-28T17:00:01Z start key=250.0 hotkey=⌥⌘B
+2026-10-28T17:00:03Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:00:06Z expand
+2026-10-28T17:01:24Z nudge left: key 255.0 x 1963 -> 1719
+2026-10-28T17:01:32Z nudge right: no neighbour, divider stays
+2026-10-28T17:01:44Z nudge right: no neighbour, divider stays
+2026-10-28T17:02:04Z nudge left: key 499.0 x 1719 -> 1641
+2026-10-28T17:02:31Z start key=499.0 hotkey=⌥⌘B
+2026-10-28T17:02:33Z probe right key=498.9990234375 probe=1728w17 divider=1624w26
+2026-10-28T17:02:33Z nudge right: no neighbour, divider stays
+2026-10-28T17:04:08Z start key=499.0 hotkey=⌥⌘B
+2026-10-28T17:04:10Z probe right key=498.9990234375 probe=1728w17 divider=1630w26
+2026-10-28T17:04:11Z probe right key=498.9990234375 probe=1702w17 divider=1719w26
+2026-10-28T17:04:11Z nudge right: key 498.7490234375 x 1647 -> 1719
+2026-10-28T17:04:24Z probe right key=498.748046875 probe=1728w17 divider=1702w26
+2026-10-28T17:04:24Z probe right key=497.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:25Z probe right key=496.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:25Z probe right key=494.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:25Z probe right key=490.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:26Z probe right key=482.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:26Z probe right key=466.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:26Z probe right key=434.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:26Z probe right key=370.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:27Z probe right key=242.7490234375 probe=1972w17 divider=1702w26
+2026-10-28T17:04:27Z probe right key=306.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:27Z probe right key=274.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:28Z probe right key=258.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:28Z probe right key=250.7490234375 probe=1972w17 divider=1702w26
+2026-10-28T17:04:28Z probe right key=254.7490234375 probe=1972w17 divider=1702w26
+2026-10-28T17:04:28Z probe right key=256.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:29Z probe right key=255.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:29Z probe right key=255.2490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:29Z probe right key=254.9990234375 probe=1972w17 divider=1702w26
+2026-10-28T17:04:30Z probe right key=255.1240234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:30Z probe right key=255.0615234375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:30Z probe right key=255.0302734375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:31Z probe right key=255.0146484375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:31Z probe right key=255.0068359375 probe=1728w17 divider=1702w26
+2026-10-28T17:04:31Z probe right key=255.0029296875 probe=1728w17 divider=1702w26
+2026-10-28T17:04:31Z probe right key=255.0009765625 probe=1728w17 divider=1702w26
+2026-10-28T17:04:32Z probe right key=255.0 probe=1728w17 divider=1702w26
+2026-10-28T17:04:32Z probe right key=254.9990234375 probe=1946w17 divider=1963w26
+2026-10-28T17:04:33Z nudge right: key 254.7490234375 x 1719 -> 1963
+2026-10-28T17:04:38Z probe left key=254.75 probe=1946w17 divider=1963w26
+2026-10-28T17:04:38Z probe left key=255.7490234375 probe=1702w17 divider=1963w26
+2026-10-28T17:04:39Z probe left key=255.2490234375 probe=1702w17 divider=1963w26
+2026-10-28T17:04:39Z probe left key=254.9990234375 probe=1946w17 divider=1963w26
+2026-10-28T17:04:39Z probe left key=255.1240234375 probe=1702w17 divider=1963w26
+2026-10-28T17:04:40Z probe left key=255.0615234375 probe=1702w17 divider=1963w26
+2026-10-28T17:04:40Z probe left key=255.0302734375 probe=1702w17 divider=1963w26
+2026-10-28T17:04:40Z probe left key=255.0146484375 probe=1702w17 divider=1963w26
+2026-10-28T17:04:41Z probe left key=255.0068359375 probe=1702w17 divider=1963w26
+2026-10-28T17:04:41Z probe left key=255.0029296875 probe=1702w17 divider=1963w26
+2026-10-28T17:04:41Z probe left key=255.0009765625 probe=1702w17 divider=1963w26
+2026-10-28T17:04:41Z probe left key=255.0 probe=1702w17 divider=1963w26
+2026-10-28T17:04:42Z probe left key=255.0 probe=1728w17 divider=1702w26
+2026-10-28T17:04:42Z nudge left: key 255.25 x 1963 -> 1719
+2026-10-28T17:04:52Z probe left key=255.2509765625 probe=1702w17 divider=1719w26
+2026-10-28T17:04:53Z probe left key=256.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:53Z probe left key=257.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:53Z probe left key=259.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:53Z probe left key=263.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:54Z probe left key=271.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:54Z probe left key=287.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:54Z probe left key=319.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:55Z probe left key=383.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:55Z probe left key=511.25 probe=1630w17 divider=1719w26
+2026-10-28T17:04:55Z probe left key=447.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:56Z probe left key=479.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:56Z probe left key=495.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:56Z probe left key=503.25 probe=1630w17 divider=1719w26
+2026-10-28T17:04:56Z probe left key=499.25 probe=1630w17 divider=1719w26
+2026-10-28T17:04:57Z probe left key=497.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:57Z probe left key=498.25 probe=1702w17 divider=1719w26
+2026-10-28T17:04:57Z probe left key=498.75 probe=1702w17 divider=1719w26
+2026-10-28T17:04:58Z probe left key=499.0 probe=1630w17 divider=1719w26
+2026-10-28T17:04:58Z probe left key=498.875 probe=1702w17 divider=1719w26
+2026-10-28T17:04:58Z probe left key=498.9375 probe=1702w17 divider=1719w26
+2026-10-28T17:04:59Z probe left key=498.96875 probe=1702w17 divider=1719w26
+2026-10-28T17:04:59Z probe left key=498.984375 probe=1702w17 divider=1719w26
+2026-10-28T17:04:59Z probe left key=498.9921875 probe=1702w17 divider=1719w26
+2026-10-28T17:04:59Z probe left key=498.99609375 probe=1702w17 divider=1719w26
+2026-10-28T17:05:00Z probe left key=498.998046875 probe=1702w17 divider=1719w26
+2026-10-28T17:05:00Z probe left key=498.9990234375 probe=1702w17 divider=1719w26
+2026-10-28T17:05:01Z probe left key=499.0 probe=1656w17 divider=1630w26
+2026-10-28T17:05:01Z nudge left: key 499.25 x 1719 -> 1647
+2026-10-28T17:05:06Z probe left key=499.2509765625 probe=1630w17 divider=1647w26
+2026-10-28T17:05:07Z probe left key=500.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:07Z probe left key=501.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:07Z probe left key=503.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:08Z probe left key=507.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:08Z probe left key=515.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:08Z probe left key=531.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:08Z probe left key=563.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:09Z probe left key=627.25 probe=1566w17 divider=1647w26
+2026-10-28T17:05:09Z probe left key=595.25 probe=1592w17 divider=1647w26
+2026-10-28T17:05:09Z probe left key=579.25 probe=1592w17 divider=1647w26
+2026-10-28T17:05:10Z probe left key=571.25 probe=1592w17 divider=1647w26
+2026-10-28T17:05:10Z probe left key=567.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:10Z probe left key=569.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:11Z probe left key=570.25 probe=1630w17 divider=1647w26
+2026-10-28T17:05:11Z probe left key=570.75 probe=1630w17 divider=1647w26
+2026-10-28T17:05:11Z probe left key=571.0 probe=1592w17 divider=1647w26
+2026-10-28T17:05:11Z probe left key=570.875 probe=1630w17 divider=1647w26
+2026-10-28T17:05:12Z probe left key=570.9375 probe=1630w17 divider=1647w26
+2026-10-28T17:05:12Z probe left key=570.96875 probe=1630w17 divider=1647w26
+2026-10-28T17:05:12Z probe left key=570.984375 probe=1630w17 divider=1647w26
+2026-10-28T17:05:13Z probe left key=570.9921875 probe=1630w17 divider=1647w26
+2026-10-28T17:05:13Z probe left key=570.99609375 probe=1630w17 divider=1647w26
+2026-10-28T17:05:13Z probe left key=570.998046875 probe=1630w17 divider=1647w26
+2026-10-28T17:05:13Z probe left key=570.9990234375 probe=1630w17 divider=1647w26
+2026-10-28T17:05:14Z probe left key=571.0 probe=1618w17 divider=1592w26
+2026-10-28T17:05:14Z nudge left: key 571.25 x 1647 -> 1609
+2026-10-28T17:05:20Z collapse verified=true divider=Frame(minX: 1609.0, width: 26.0) pushers=[1144, 679, 0, 0, 0, 0]
+2026-10-28T17:05:22Z expand
+2026-10-28T17:05:39Z probe right key=571.2490234375 probe=1618w17 divider=1592w26
+2026-10-28T17:05:39Z probe right key=570.25 probe=1656w17 divider=1592w26
+2026-10-28T17:05:39Z probe right key=570.7490234375 probe=1656w17 divider=1592w26
+2026-10-28T17:05:40Z probe right key=570.9990234375 probe=1656w17 divider=1592w26
+2026-10-28T17:05:40Z probe right key=571.1240234375 probe=1618w17 divider=1592w26
+2026-10-28T17:05:40Z probe right key=571.0615234375 probe=1618w17 divider=1592w26
+2026-10-28T17:05:40Z probe right key=571.0302734375 probe=1618w17 divider=1592w26
+2026-10-28T17:05:41Z probe right key=571.0146484375 probe=1618w17 divider=1592w26
+2026-10-28T17:05:41Z probe right key=571.0068359375 probe=1618w17 divider=1592w26
+2026-10-28T17:05:41Z probe right key=571.0029296875 probe=1618w17 divider=1592w26
+2026-10-28T17:05:42Z probe right key=571.0009765625 probe=1618w17 divider=1592w26
+2026-10-28T17:05:42Z probe right key=571.0 probe=1618w17 divider=1592w26
+2026-10-28T17:05:43Z probe right key=570.9990234375 probe=1630w17 divider=1647w26
+2026-10-28T17:05:43Z nudge right: key 570.7490234375 x 1609 -> 1647
+2026-10-28T17:05:55Z probe right key=570.748046875 probe=1656w17 divider=1630w26
+2026-10-28T17:05:55Z probe right key=569.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:55Z probe right key=568.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:56Z probe right key=566.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:56Z probe right key=562.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:56Z probe right key=554.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:57Z probe right key=538.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:57Z probe right key=506.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:57Z probe right key=442.7490234375 probe=1728w17 divider=1630w26
+2026-10-28T17:05:58Z probe right key=474.7490234375 probe=1728w17 divider=1630w26
+2026-10-28T17:05:58Z probe right key=490.7490234375 probe=1728w17 divider=1630w26
+2026-10-28T17:05:58Z probe right key=498.7490234375 probe=1728w17 divider=1630w26
+2026-10-28T17:05:58Z probe right key=502.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:59Z probe right key=500.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:59Z probe right key=499.7490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:05:59Z probe right key=499.2490234375 probe=1656w17 divider=1630w26
+2026-10-28T17:06:00Z probe right key=498.9990234375 probe=1728w17 divider=1630w26
+2026-10-28T17:06:00Z probe right key=499.1240234375 probe=1656w17 divider=1630w26
+2026-10-28T17:06:00Z probe right key=499.0615234375 probe=1656w17 divider=1630w26
+2026-10-28T17:06:01Z probe right key=499.0302734375 probe=1656w17 divider=1630w26
+2026-10-28T17:06:01Z probe right key=499.0146484375 probe=1656w17 divider=1630w26
+2026-10-28T17:06:01Z probe right key=499.0068359375 probe=1656w17 divider=1630w26
+2026-10-28T17:06:01Z probe right key=499.0029296875 probe=1656w17 divider=1630w26
+2026-10-28T17:06:02Z probe right key=499.0009765625 probe=1656w17 divider=1630w26
+2026-10-28T17:06:02Z probe right key=499.0 probe=1656w17 divider=1630w26
+2026-10-28T17:06:03Z probe right key=498.9990234375 probe=1702w17 divider=1719w26
+2026-10-28T17:06:03Z nudge right: key 498.7490234375 x 1647 -> 1719
+2026-10-28T17:06:11Z probe right key=498.748046875 probe=1728w17 divider=1702w26
+2026-10-28T17:06:11Z probe right key=497.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:12Z probe right key=496.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:12Z probe right key=494.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:12Z probe right key=490.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:12Z probe right key=482.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:13Z probe right key=466.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:13Z probe right key=434.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:13Z probe right key=370.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:14Z probe right key=242.7490234375 probe=1972w17 divider=1702w26
+2026-10-28T17:06:14Z probe right key=306.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:14Z probe right key=274.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:14Z probe right key=258.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:15Z probe right key=250.7490234375 probe=1972w17 divider=1702w26
+2026-10-28T17:06:15Z probe right key=254.7490234375 probe=1972w17 divider=1702w26
+2026-10-28T17:06:15Z probe right key=256.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:16Z probe right key=255.7490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:16Z probe right key=255.2490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:16Z probe right key=254.9990234375 probe=1972w17 divider=1702w26
+2026-10-28T17:06:16Z probe right key=255.1240234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:17Z probe right key=255.0615234375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:17Z probe right key=255.0302734375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:17Z probe right key=255.0146484375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:18Z probe right key=255.0068359375 probe=1728w17 divider=1702w26
+2026-10-28T17:06:18Z probe right key=255.0029296875 probe=1728w17 divider=1702w26
+2026-10-28T17:06:18Z probe right key=255.0009765625 probe=1728w17 divider=1702w26
+2026-10-28T17:06:19Z probe right key=255.0 probe=1728w17 divider=1702w26
+2026-10-28T17:06:19Z probe right key=254.9990234375 probe=1946w17 divider=1963w26
+2026-10-28T17:06:20Z nudge right: key 254.7490234375 x 1719 -> 1963
+2026-10-28T17:06:27Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:06:29Z expand
+2026-10-28T17:06:31Z start key=254.7490234375 hotkey=⌥⌘B
+2026-10-28T17:06:45Z start key=254.7490234375 hotkey=⌥⌘B
+2026-10-28T17:07:29Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:07:32Z start key=254.7490234375 hotkey=⌥⌘B
+2026-10-28T17:10:34Z start key=254.7490234375 hotkey=⌥⌘B
+2026-10-28T17:10:36Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:10:36Z expand
+2026-10-28T17:10:40Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:10:42Z probe left key=254.75 probe=1946w17 divider=1963w26
+2026-10-28T17:10:42Z probe left key=255.7490234375 probe=1702w17 divider=1963w26
+2026-10-28T17:10:42Z probe left key=255.2490234375 probe=1702w17 divider=1963w26
+2026-10-28T17:10:42Z probe left key=254.9990234375 probe=1946w17 divider=1963w26
+2026-10-28T17:10:43Z probe left key=255.1240234375 probe=1702w17 divider=1963w26
+2026-10-28T17:10:43Z probe left key=255.0615234375 probe=1702w17 divider=1963w26
+2026-10-28T17:10:43Z probe left key=255.0302734375 probe=1702w17 divider=1963w26
+2026-10-28T17:10:44Z probe left key=255.0146484375 probe=1702w17 divider=1963w26
+2026-10-28T17:10:44Z probe left key=255.0068359375 probe=1702w17 divider=1963w26
+2026-10-28T17:10:44Z probe left key=255.0029296875 probe=1702w17 divider=1963w26
+2026-10-28T17:10:45Z probe left key=255.0009765625 probe=1702w17 divider=1963w26
+2026-10-28T17:10:45Z probe left key=255.0 probe=1702w17 divider=1963w26
+2026-10-28T17:10:45Z probe left key=255.0 probe=1728w17 divider=1702w26
+2026-10-28T17:10:46Z nudge left: key 255.25 x 1963 -> 1719
+2026-10-28T17:10:46Z collapse: pushers not adjacent, retrying once
+2026-10-28T17:10:46Z collapse verified=false divider=Frame(minX: 1719.0, width: 26.0) pushers=[1254, 789, 316, 0, 0, 0]
+2026-10-28T17:10:58Z probe right key=255.2490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:10:58Z probe right key=254.25 probe=1972w17 divider=1702w26
+2026-10-28T17:10:58Z probe right key=254.7490234375 probe=1972w17 divider=1702w26
+2026-10-28T17:10:59Z probe right key=254.9990234375 probe=1972w17 divider=1702w26
+2026-10-28T17:10:59Z probe right key=255.1240234375 probe=1728w17 divider=1702w26
+2026-10-28T17:10:59Z probe right key=255.0615234375 probe=1728w17 divider=1702w26
+2026-10-28T17:10:59Z probe right key=255.0302734375 probe=1728w17 divider=1702w26
+2026-10-28T17:11:00Z probe right key=255.0146484375 probe=1728w17 divider=1702w26
+2026-10-28T17:11:00Z probe right key=255.0068359375 probe=1728w17 divider=1702w26
+2026-10-28T17:11:00Z probe right key=255.0029296875 probe=1728w17 divider=1702w26
+2026-10-28T17:11:01Z probe right key=255.0009765625 probe=1728w17 divider=1702w26
+2026-10-28T17:11:01Z probe right key=255.0 probe=1728w17 divider=1702w26
+2026-10-28T17:11:01Z probe right key=254.9990234375 probe=1946w17 divider=1963w26
+2026-10-28T17:11:02Z nudge right: key 254.7490234375 x 1719 -> 1963
+2026-10-28T17:11:02Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:11:13Z expand
+2026-10-28T17:11:31Z probe left key=254.75 probe=1946w17 divider=1963w26
+2026-10-28T17:11:32Z probe left key=255.7490234375 probe=1702w17 divider=1963w26
+2026-10-28T17:11:32Z probe left key=255.2490234375 probe=1702w17 divider=1963w26
+2026-10-28T17:11:32Z probe left key=254.9990234375 probe=1946w17 divider=1963w26
+2026-10-28T17:11:33Z probe left key=255.1240234375 probe=1702w17 divider=1963w26
+2026-10-28T17:11:33Z probe left key=255.0615234375 probe=1702w17 divider=1963w26
+2026-10-28T17:11:33Z probe left key=255.0302734375 probe=1702w17 divider=1963w26
+2026-10-28T17:11:33Z probe left key=255.0146484375 probe=1702w17 divider=1963w26
+2026-10-28T17:11:34Z probe left key=255.0068359375 probe=1702w17 divider=1963w26
+2026-10-28T17:11:34Z probe left key=255.0029296875 probe=1702w17 divider=1963w26
+2026-10-28T17:11:34Z probe left key=255.0009765625 probe=1702w17 divider=1963w26
+2026-10-28T17:11:35Z probe left key=255.0 probe=1702w17 divider=1963w26
+2026-10-28T17:11:35Z probe left key=255.0 probe=1728w17 divider=1702w26
+2026-10-28T17:11:36Z nudge left: key 255.25 x 1963 -> 1719
+2026-10-28T17:11:50Z collapse: pushers not adjacent, retrying once
+2026-10-28T17:11:50Z collapse verified=false divider=Frame(minX: 1719.0, width: 26.0) pushers=[1254, 789, 316, 0, 0, 0]
+2026-10-28T17:12:19Z start key=255.25 hotkey=⌥⌘B
+2026-10-28T17:12:21Z collapse verified=true divider=Frame(minX: 1719.0, width: 26.0) pushers=[1254, 789, 316, 0, 0, 0]
+2026-10-28T17:12:24Z expand
+2026-10-28T17:12:26Z probe right key=255.2490234375 probe=1728w17 divider=1702w26
+2026-10-28T17:12:26Z probe right key=254.25 probe=1972w17 divider=1702w26
+2026-10-28T17:12:26Z probe right key=254.7490234375 probe=1972w17 divider=1702w26
+2026-10-28T17:12:26Z probe right key=254.9990234375 probe=1972w17 divider=1702w26
+2026-10-28T17:12:27Z probe right key=255.1240234375 probe=1728w17 divider=1702w26
+2026-10-28T17:12:27Z probe right key=255.0615234375 probe=1728w17 divider=1702w26
+2026-10-28T17:12:27Z probe right key=255.0302734375 probe=1728w17 divider=1702w26
+2026-10-28T17:12:28Z probe right key=255.0146484375 probe=1728w17 divider=1702w26
+2026-10-28T17:12:28Z probe right key=255.0068359375 probe=1728w17 divider=1702w26
+2026-10-28T17:12:28Z probe right key=255.0029296875 probe=1728w17 divider=1702w26
+2026-10-28T17:12:29Z probe right key=255.0009765625 probe=1728w17 divider=1702w26
+2026-10-28T17:12:29Z probe right key=255.0 probe=1728w17 divider=1702w26
+2026-10-28T17:12:29Z probe right key=254.9990234375 probe=1946w17 divider=1963w26
+2026-10-28T17:12:30Z nudge right: key 254.7490234375 x 1719 -> 1963
+2026-10-28T17:12:42Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:12:44Z expand
+2026-10-28T17:16:33Z start key=254.7490234375 hotkey=⌥⌘B
+2026-10-28T17:16:35Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:16:38Z expand
+2026-10-28T17:48:24Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:48:25Z expand
+2026-10-28T17:48:34Z collapse verified=true divider=Frame(minX: 1963.0, width: 26.0) pushers=[1498, 1033, 568, 0, 0, 0]
+2026-10-28T17:48:34Z expand
+2026-10-28T17:48:45Z probe right key=254.748046875 probe=1972w17 divider=1946w26
+2026-10-28T17:48:45Z probe right key=253.7490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:45Z probe right key=252.7490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:46Z probe right key=250.7490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:46Z probe right key=246.7490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:46Z probe right key=238.7490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:47Z probe right key=222.7490234375 probe=2003w17 divider=1946w26
+2026-10-28T17:48:47Z probe right key=230.7490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:47Z probe right key=226.7490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:47Z probe right key=224.7490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:48Z probe right key=223.7490234375 probe=2003w17 divider=1946w26
+2026-10-28T17:48:48Z probe right key=224.2490234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:48Z probe right key=223.9990234375 probe=2003w17 divider=1946w26
+2026-10-28T17:48:49Z probe right key=224.1240234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:49Z probe right key=224.0615234375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:49Z probe right key=224.0302734375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:50Z probe right key=224.0146484375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:50Z probe right key=224.0068359375 probe=1972w17 divider=1946w26
+2026-10-28T17:48:50Z probe right key=224.0029296875 probe=1972w17 divider=1946w26
+2026-10-28T17:48:50Z probe right key=224.0009765625 probe=1972w17 divider=1946w26
+2026-10-28T17:48:51Z probe right key=224.0 probe=1972w17 divider=1946w26
+2026-10-28T17:48:51Z probe right key=223.9990234375 probe=1977w17 divider=1994w26
+2026-10-28T17:48:52Z nudge right: key 223.7490234375 x 1963 -> 1994
+2026-10-28T17:48:53Z collapse verified=true divider=Frame(minX: 1994.0, width: 26.0) pushers=[1529, 1064, 599, 0, 0, 0]
+2026-10-28T17:48:53Z expand
+2026-10-28T17:48:59Z probe right key=223.748046875 probe=2003w17 divider=1592w26
+2026-10-28T17:49:00Z probe right key=223.748046875 probe=2003w17 divider=1592w26
+2026-10-28T17:49:00Z probe right key=223.748046875 probe=2003w17 divider=1592w26
+2026-10-28T17:49:01Z probe right key=223.748046875 probe=2003w17 divider=1592w26
+2026-10-28T17:49:02Z probe right key=223.748046875 probe=2003w17 divider=1592w26
+2026-10-28T17:49:02Z probe right key=223.748046875 probe=2003w17 divider=1592w26
+2026-10-28T17:49:02Z nudge right: no neighbour, divider stays
+2026-10-28T17:49:03Z collapse: pushers not adjacent, retrying once
+2026-10-28T17:49:03Z collapse verified=false divider=Frame(minX: 1609.0, width: 26.0) pushers=[1555, 1090, 625, 0, 0, 0]
+2026-10-28T17:50:10Z expand
+2026-10-28T17:51:33Z start key=223.7490234375 userPlaced=true hotkey=⌥⌘B
+2026-10-28T17:51:48Z adopt user position: key 131071.99951171875 (131071.9990234375..131072.0) x 1609 -> 1609
+2026-10-28T17:51:48Z collapse: pushers not adjacent, retrying once
+2026-10-28T17:51:48Z collapse verified=false divider=Frame(minX: 1609.0, width: 26.0) pushers=[785, 312, 0, 0, 0, 0]
+2026-10-28T17:51:51Z expand
+2026-10-28T17:52:23Z start key=131071.99951171875 userPlaced=true hotkey=⌥⌘B
+2026-10-28T17:52:26Z adopt probe key=1.0 probe=2003w17 divider=1592
+2026-10-28T17:52:26Z adopt probe key=1024.0 probe=2003w17 divider=1592
+2026-10-28T17:52:27Z adopt probe key=2048.0 probe=2003w17 divider=1592
+2026-10-28T17:52:27Z adopt probe key=4096.0 probe=2003w17 divider=1592
+2026-10-28T17:52:27Z adopt probe key=8192.0 probe=2003w17 divider=1592
+2026-10-28T17:52:28Z adopt probe key=16384.0 probe=2003w17 divider=1592
+2026-10-28T17:52:28Z adopt probe key=32768.0 probe=2003w17 divider=1592
+2026-10-28T17:52:28Z adopt probe key=65536.0 probe=2003w17 divider=1592
+2026-10-28T17:52:29Z adopt probe key=65536.5 probe=2003w17 divider=1592
+2026-10-28T17:52:29Z adopt probe key=98304.25 probe=2003w17 divider=1592
+2026-10-28T17:52:29Z adopt probe key=114688.125 probe=2003w17 divider=1592
+2026-10-28T17:52:29Z adopt probe key=122880.0625 probe=2003w17 divider=1592
+2026-10-28T17:52:30Z adopt probe key=126976.03125 probe=2003w17 divider=1592
+2026-10-28T17:52:30Z adopt probe key=129024.015625 probe=2003w17 divider=1592
+2026-10-28T17:52:30Z adopt probe key=130048.0078125 probe=2003w17 divider=1592
+2026-10-28T17:52:31Z adopt probe key=130560.00390625 probe=2003w17 divider=1592
+2026-10-28T17:52:31Z adopt probe key=130816.001953125 probe=2003w17 divider=1592
+2026-10-28T17:52:31Z adopt probe key=130944.0009765625 probe=2003w17 divider=1592
+2026-10-28T17:52:31Z adopt probe key=131008.0 probe=2003w17 divider=1592
+2026-10-28T17:52:32Z adopt probe key=131040.0 probe=2003w17 divider=1592
+2026-10-28T17:52:32Z adopt probe key=131056.0 probe=2003w17 divider=1592
+2026-10-28T17:52:32Z adopt probe key=131064.0 probe=2003w17 divider=1592
+2026-10-28T17:52:33Z adopt probe key=131068.0 probe=2003w17 divider=1592
+2026-10-28T17:52:33Z adopt probe key=131070.0 probe=2003w17 divider=1592
+2026-10-28T17:52:33Z adopt probe key=131071.0 probe=2003w17 divider=1592
+2026-10-28T17:52:33Z adopt probe key=131071.5 probe=2003w17 divider=1592
+2026-10-28T17:52:34Z adopt probe key=131071.75 probe=2003w17 divider=1592
+2026-10-28T17:52:34Z adopt probe key=131071.875 probe=2003w17 divider=1592
+2026-10-28T17:52:34Z adopt probe key=131071.9375 probe=2003w17 divider=1592
+2026-10-28T17:52:35Z adopt probe key=131071.96875 probe=2003w17 divider=1592
+2026-10-28T17:52:35Z adopt probe key=131071.984375 probe=2003w17 divider=1592
+2026-10-28T17:52:35Z adopt probe key=131071.9921875 probe=2003w17 divider=1592
+2026-10-28T17:52:35Z adopt probe key=131071.99609375 probe=2003w17 divider=1592
+2026-10-28T17:52:36Z adopt probe key=131071.998046875 probe=2003w17 divider=1592
+2026-10-28T17:52:36Z adopt probe key=131071.9990234375 probe=2003w17 divider=1592
+2026-10-28T17:52:36Z adopt user position: key 131071.99951171875 (131071.9990234375..131072.0) x 1609 -> 1609
+2026-10-28T17:52:37Z collapse: pushers not adjacent, retrying once
+2026-10-28T17:52:37Z collapse verified=false divider=Frame(minX: 1609.0, width: 26.0) pushers=[785, 312, 0, 0, 0, 0]
+2026-10-28T17:52:40Z expand
+2026-10-28T17:54:20Z start key=131071.99951171875 userPlaced=true hotkey=⌥⌘B
+2026-10-28T17:54:30Z calibrate: divider key in 625.9990234375..626.0, x 1592
+2026-10-28T17:54:30Z collapse: pushers not adjacent, retrying with new pusher names
+2026-10-28T17:54:37Z calibrate: divider key in 625.9990234375..626.0, x 1592
+2026-10-28T17:54:37Z collapse verified=false divider=Frame(minX: 1609.0, width: 26.0) pushers=[1170, 705, 232, 0, 0, 0]
+2026-10-28T17:54:39Z expand
+2026-10-28T17:55:13Z start key=625.99951171875 userPlaced=true hotkey=⌥⌘B
+2026-10-28T17:55:22Z calibrate: divider key in 625.9990234375..626.0, x 1592
+2026-10-28T17:55:23Z adopt: Komora_Divider_g1 key 625.99951171875 x 1592 -> 1609
+2026-10-28T17:55:23Z collapse verified=true divider=Frame(minX: 1609.0, width: 26.0) pushers=[1144, 679, 0, 0, 0, 0]
+2026-10-28T17:55:32Z expand
+2026-10-28T19:48:35Z collapse verified=true divider=Frame(minX: 1609.0, width: 26.0) pushers=[1144, 679, 0, 0, 0, 0]
+2026-10-28T19:48:36Z expand
+2026-10-28T19:48:39Z collapse verified=true divider=Frame(minX: 1609.0, width: 26.0) pushers=[1144, 679, 0, 0, 0, 0]
+2026-10-28T19:48:40Z expand
+2026-10-28T19:48:52Z collapse verified=true divider=Frame(minX: 1609.0, width: 26.0) pushers=[1144, 679, 0, 0, 0, 0]
+2026-10-28T19:48:53Z expand
+2026-10-28T19:55:45Z collapse verified=true divider=Frame(minX: 1609.0, width: 26.0) pushers=[1144, 679, 0, 0, 0, 0]

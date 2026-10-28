@@ -1,0 +1,17 @@
+2026-10-28T16:48:54Z
+27.0.1
+### before
+  win@0 w2320 n=21: ·@1224w38 AppB@1262w33 ·@1295w38 ·@1333w32 ·@1365w30 ·@1395w32 ·@1427w38 ·@1465w38 ·@1503w40 ·@1543w40 Pelmet divider@1583w26 Pelmet@1609w26 AppC import@1635w38 AppD label@1673w72      @1745w244 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=15: AppE@2763w244 AppD@2936w71 AppG@2967w40 AppH@2967w40 AppJ@2969w38 AppCTray@2969w38 Pelmet@2981w26 Pelmet@2981w26 Show Hidden Me@2990w17 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+pelmet isCollapsed=false
+### press Pelmet toggle
+press -> 0
+### collapsed?
+  win@0 w2320 n=23: ·@313w465 Show Hidden Me@761w17 ·@786w38 AppB@824w33 ·@857w38 ·@895w32 ·@927w30 ·@957w32 ·@989w38 ·@1027w38 ·@1065w40 ·@1105w40 Pelmet divider@1145w465 Pelmet@1610w26 AppC import@1636w38 AppD label@1674w71      @1745w244 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=11: AppE@2763w244 AppD@2936w71 AppCTray@2969w38 Pelmet@2981w26 Show Hidden Me@2990w17 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+### press again
+press -> 0
+### expanded?
+  win@0 w2320 n=21: ·@1224w38 AppB@1262w33 ·@1295w38 ·@1333w32 ·@1365w30 ·@1395w32 ·@1427w38 ·@1465w38 ·@1503w40 ·@1543w40 Pelmet divider@1583w26 Pelmet@1609w26 AppC import@1635w38 AppD label@1673w72      @1745w244 ·@1989w31 Bluetooth|com.@2028w16 ·@2052w44 Wi‑Fi, not ena@2104w22 Control Center@2142w26 Clock|com.appl@2181w116
+  win@2320 w1026 n=15: AppE@2763w244 AppD@2936w71 AppH@2967w40 AppG@2967w40 AppCTray@2969w38 AppJ@2969w38 Pelmet@2981w26 Pelmet@2981w26 Show Hidden Me@2990w17 AppF@3015w31 Bluetooth|com.@3054w16 TextInputMenuA@3078w44 Wi‑Fi, not ena@3130w22 Control Center@3168w26 Clock|com.appl@3207w116
+### done
